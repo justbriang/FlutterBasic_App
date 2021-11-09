@@ -13,6 +13,7 @@ import 'package:flutterbasic/screens/design/utils/hex_color.dart';
 import 'package:flutterbasic/screens/info/info_page.dart';
 import 'package:flutterbasic/screens/info/widgets/show_message.dart';
 import 'package:flutterbasic/utils.dart';
+import 'package:intl/intl.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -76,10 +77,10 @@ class _DesignPageState extends State<DesignPage> {
                       actions: choices.map<Widget>((iconDetail) {
                         return IconButton(
                           onPressed: () {
-                                showMessage(
-                              message: 'Not implemented, Yet!',
-                              color: Colors.black,
-                              context: context);
+                            showMessage(
+                                message: 'Not implemented, Yet!',
+                                color: Colors.black,
+                                context: context);
                           },
                           icon: Icon(
                             iconDetail.icon,
@@ -149,7 +150,7 @@ Widget _profileHeader(BuildContext context, UserBlocLoaded state) {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Container(
-                        padding: EdgeInsets.all(0),
+                        padding: const EdgeInsets.all(0),
                         width: 130,
                         height: 130,
                         transform: Matrix4.translationValues(0, -30, 0),
@@ -170,7 +171,7 @@ Widget _profileHeader(BuildContext context, UserBlocLoaded state) {
                       Container(
                         transform: Matrix4.translationValues(7, -10, 0),
                         child: Text(
-                          state.user!.name ?? 'Not known',
+                          state.user?.name ?? 'Not known',
                           style: TextStyle(fontSize: 20, color: Colors.black),
                         ),
                       ),
@@ -198,30 +199,42 @@ Widget _profileBody(context, UserBlocLoaded state) {
           children: [
             GestureDetector(
               onTap: () {
-             Navigator.push(
-        context,
-        PageRouteBuilder(
-          transitionDuration:Duration(seconds:2),
-          transitionsBuilder: (BuildContext context,Animation<double> animation,Animation<double> secAnimation,Widget child){
-            animation=CurvedAnimation(parent: animation, curve: Curves.elasticInOut);
+                if (state.user != null) {
+                  Navigator.push(
+                      context,
+                      PageRouteBuilder(
+                          transitionDuration: const Duration(seconds: 2),
+                          transitionsBuilder: (BuildContext context,
+                              Animation<double> animation,
+                              Animation<double> secAnimation,
+                              Widget child) {
+                            animation = CurvedAnimation(
+                                parent: animation, curve: Curves.elasticInOut);
 
-            return ScaleTransition(
-              alignment: Alignment.center,
-              scale: animation,
-              child: child,
-            );
-          },
-          
-          pageBuilder: (BuildContext context,Animation<double> animation,Animation<double> secAnimation){
-          return UserDetailsPage(
-                user: state.user!,
-                );
-        }));
-        // MaterialPageRoute(
-        //     builder: (_) => UserDetailsPage(
-        //         user: state.user!,
-        //         )));
-               
+                            return ScaleTransition(
+                              alignment: Alignment.center,
+                              scale: animation,
+                              child: child,
+                            );
+                          },
+                          pageBuilder: (BuildContext context,
+                              Animation<double> animation,
+                              Animation<double> secAnimation) {
+                            return UserDetailsPage(
+                              user: state.user!,
+                            );
+                          }));
+                } else {
+                  showMessage(
+                      message:
+                          'Profile details not set yet.Please set your details inorder to continue',
+                      color: Colors.red,
+                      context: context);
+                }
+                // MaterialPageRoute(
+                //     builder: (_) => UserDetailsPage(
+                //         user: state.user!,
+                //         )));
               },
               child: const ListTile(
                 leading: Icon(Icons.settings),
@@ -242,10 +255,10 @@ Widget _profileBody(context, UserBlocLoaded state) {
           children: [
             GestureDetector(
               onTap: () {
-                 showMessage(
-                              message: 'Not implemented, Yet!',
-                              color: Colors.black,
-                              context: context);
+                showMessage(
+                    message: 'Not implemented, Yet!',
+                    color: Colors.black,
+                    context: context);
               },
               child: const ListTile(
                 leading: Icon(Icons.settings),
@@ -266,10 +279,10 @@ Widget _profileBody(context, UserBlocLoaded state) {
           children: [
             GestureDetector(
               onTap: () {
-                   showMessage(
-                              message: 'Not implemented, Yet!',
-                              color: Colors.black,
-                              context: context);
+                showMessage(
+                    message: 'Not implemented, Yet!',
+                    color: Colors.black,
+                    context: context);
               },
               child: const ListTile(
                 leading: Icon(Icons.logout),
@@ -326,7 +339,8 @@ Widget _shimmerProfileLoading(BuildContext context) => Shimmer.fromColors(
                           child: Container(
                             width: 150,
                             height: 15,
-                            decoration: const BoxDecoration(color: Colors.white),
+                            decoration:
+                                const BoxDecoration(color: Colors.white),
                           ),
                         ),
                         Padding(
@@ -334,7 +348,8 @@ Widget _shimmerProfileLoading(BuildContext context) => Shimmer.fromColors(
                           child: Container(
                             width: 150,
                             height: 15,
-                            decoration: const BoxDecoration(color: Colors.white),
+                            decoration:
+                                const BoxDecoration(color: Colors.white),
                           ),
                         )
                       ],
@@ -343,7 +358,6 @@ Widget _shimmerProfileLoading(BuildContext context) => Shimmer.fromColors(
                 )
               ],
             ),
-        
             const Padding(
               padding: EdgeInsets.only(top: 40),
               child: Center(
@@ -356,7 +370,6 @@ Widget _shimmerProfileLoading(BuildContext context) => Shimmer.fromColors(
           ],
         ),
       ),
-      
     );
 Widget _mainProfileContainer(BuildContext context, UserBlocLoaded state) =>
     Column(
@@ -430,12 +443,12 @@ Widget _mainProfileContainer(BuildContext context, UserBlocLoaded state) =>
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Text(
-                    'Joined on ${state.user!.updated_on}',
+                    'Joined on ${state.user?.updated_on ?? DateFormat('EEE, MMM d, ' 'yy').format(DateTime.now()).toString()}',
                     style: TextStyle(color: Colors.grey),
                   ),
                 ),
               ),
-              _profileBody(context,state),
+              _profileBody(context, state),
             ],
           ),
         ),

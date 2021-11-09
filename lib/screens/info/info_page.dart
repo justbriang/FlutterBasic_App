@@ -17,14 +17,12 @@ import 'package:intl/intl.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class InfoPage extends StatefulWidget {
- static const name = 'InfoPage';
-
-
+  static const name = 'InfoPage';
 
   InfoPage({Key? key}) : super(key: key);
 
   @override
-InfoPageState createState() => InfoPageState();
+  InfoPageState createState() => InfoPageState();
 }
 
 class InfoPageState extends State<InfoPage> {
@@ -86,12 +84,13 @@ class InfoPageState extends State<InfoPage> {
             userBloc.add(InitialUserEvent());
             return const CircularProgressIndicator();
           } else if (state is UserBlocLoaded) {
-            if (state.user != null) {
-              _initTextControllers(state.user!);
-            }
-            if (state.user!.countrycode != null) {
+            if (state.user!=null) {
+              _initTextControllers(state.user);
               countryCode = state.user!.countrycode!;
             }
+            // if (state.user!.countrycode != null) {
+            //   countryCode = state.user!.countrycode!;
+            // }
             return CustomScrollView(
               slivers: <Widget>[
                 SliverAppBar(
@@ -178,7 +177,10 @@ class InfoPageState extends State<InfoPage> {
                               padding:
                                   const EdgeInsets.only(left: 20, right: 40),
                               child: TextFormField(
-                                inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+"))],
+                                inputFormatters: [
+                                  FilteringTextInputFormatter.allow(RegExp(
+                                      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+"))
+                                ],
                                 controller: emailController,
                                 decoration: const InputDecoration(
                                   icon: Icon(Icons.email),
@@ -201,8 +203,7 @@ class InfoPageState extends State<InfoPage> {
                                 Expanded(
                                   flex: 1,
                                   child: CountryCodePicker(
-                                    initialSelection:
-                                        state.user!.countrycode ?? 'KE',
+                                    initialSelection: state.user?.countrycode ??countryCode,
                                     alignLeft: true,
                                     favorite: ['US', 'KE'],
                                     onChanged: (code) {
@@ -215,7 +216,10 @@ class InfoPageState extends State<InfoPage> {
                                 Expanded(
                                   flex: 2,
                                   child: TextFormField(
-                                    inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9]'))],
+                                    inputFormatters: [
+                                      FilteringTextInputFormatter.allow(
+                                          RegExp(r'[a-zA-Z0-9]'))
+                                    ],
                                     controller: phonenumberController,
                                     decoration: const InputDecoration(
                                       hintText: 'Enter Your Phonenumber',
@@ -282,8 +286,8 @@ class InfoPageState extends State<InfoPage> {
         "email": emailController.text.toString().trim(),
         'countrycode': countryCode,
         'phonenumber': phonenumberController.text.toString().trim(),
- 
-        'updated_at':DateFormat('EEE, MMM d, ''yy').format(DateTime.now()).toString()
+        'updated_at':
+            DateFormat('EEE, MMM d, ' 'yy').format(DateTime.now()).toString()
       };
       userBloc.add(UpdateUserDetailsEvent(userDetails: userCredentials));
     } else {
@@ -291,9 +295,9 @@ class InfoPageState extends State<InfoPage> {
     }
   }
 
-  void _initTextControllers(User user) {
+  void _initTextControllers(User? user) {
     usernameController.value = TextEditingValue(
-      text: user.name ?? '',
+      text: user!.name ?? '',
       selection: TextSelection.fromPosition(
         TextPosition(offset: user.name!.length),
       ),

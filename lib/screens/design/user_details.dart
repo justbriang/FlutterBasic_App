@@ -16,18 +16,7 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
   void initState() {
     super.initState();
     _initTextControllers(widget.user);
-    // Future.delayed(Duration.zero, () {
-    //   widget.user = ModalRoute.of(context)!.settings.arguments as User;
-    //   print('user is ${widget.user}');
-    //   // if (widget.user != null) {
-    //   //   _initTextControllers(widget.user!);
-    //   // }
-    //   // setState(() {
-    //   //   if (widget.user != null) {
-    //   //     selectedIndex = widget.selectedIndex!;
-    //   //   }
-    //   // });
-    // });
+
   }
 
   TextEditingController usernameController = TextEditingController();
@@ -123,7 +112,7 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
                           Expanded(
                             flex: 1,
                             child: CountryCodePicker(
-                              initialSelection: 'KE',
+                              initialSelection: widget.user.countrycode??'KE',
                               alignLeft: true,
                               favorite: ['US', 'KE'],
                               onChanged: (code) {},
