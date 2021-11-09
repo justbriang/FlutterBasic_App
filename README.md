@@ -29,7 +29,7 @@ Elegant Profile page design using widgets such as slivers to achieve fancy scrol
     Build, run and pray that it works!
 
 
-##Don't know what flutter is?
+## Don't know what flutter is?
 
 
 
@@ -38,6 +38,6 @@ Elegant Profile page design using widgets such as slivers to achieve fancy scrol
     For more info head on over to  [Flutterdev]('https://flutter.dev')
     
     
-##Questions? 
+## Questions? 
 
     Didn't understand something? All the code is mostly self-explanatory but still if you have any questions email me(gichukbx@gmail.com) [email](mailto:gichukxb@gmail.com)
