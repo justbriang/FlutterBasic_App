@@ -35,9 +35,8 @@ Elegant Profile page design using widgets such as slivers to achieve fancy scrol
 
     Flutter is Google’s UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.
 
-    For more info head on over to  [Flutterdev]('https://flutter.dev')
-    
+    For more info head on over to <a href="https://flutter.dev" target="_blank">Flutterdev</a> 
     
 ## Questions? 
 
-    Didn't understand something? All the code is mostly self-explanatory but still if you have any questions email me(gichukbx@gmail.com) [email](mailto:gichukxb@gmail.com)
+    Didn't understand something? All the code is mostly self-explanatory but still if you have any questions email me(gichukbx@gmail.com) <a mail:to="gichukxb@gmail.com" target="_blank">email</a>
