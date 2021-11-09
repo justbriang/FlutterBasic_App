@@ -18,28 +18,20 @@ Listview builders (with an appealing animation)- display data that is in a list 
 Elegant Profile page design using widgets such as slivers to achieve fancy scrolling 
 
 
-##  To run any of the examples
+###  To run any of the examples
 
-    Clone the repo
-    
-    Navigate to the root folder of the cloned repo
-    
-    Run flutter pub get in the terminal, or click Packages get in IntelliJ or Android Studio.
-
-    Build, run and pray that it works!
+    1. Clone the repo.
+    2. Navigate to the root folder of the cloned repo.
+    3. Run flutter pub get in the terminal, or click Packages get in IntelliJ or Android Studio.
+    4. Build, run and pray that it works!
 
 
 ## Don't know what flutter is?
-   
-   Flutter is Google’s UI toolkit for building beautiful, natively compiled applications for 
-    
-    mobile, web, and desktop from a single codebase.
+Flutter is Google’s UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.
 
-    For more info head on over to  [Flutterdev](https://flutter.dev)
+For more info head on over to  [Flutterdev](https://flutter.dev)
     
     
 ## Questions? 
 
-    Didn't understand something? All the code is mostly self-explanatory but still if you 
-    
-    have any questions email me(gichukbx@gmail.com) [email](mailto:gichukxb@gmail.com)
+Didn't understand something? All the code is mostly self-explanatory but still if you have any questions email me(gichukbx@gmail.com) [email](mailto:gichukxb@gmail.com)
