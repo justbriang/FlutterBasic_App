@@ -1,17 +1,43 @@
 # flutterbasic
 
-A new Flutter project.
+A basic Flutter project.
 
-## Getting Started
+## Background
 
-This project is a starting point for a Flutter application.
+This repo contains a mini project that implements some of the most common basic flutter widgets.The project utilises  BLoC Design Pattern (Business Logic Component) pattern for state management.This design pattern helps to separate presentation from business logic. Following the BLoC pattern facilitates testability and reusability. 
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### implemented Flutter Concepts include:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# FlutterBasic_App
+Formvalidation,
+State management(BLoc)
+use of Shared Preferences plugin for persistent storage of simple data 
+Use of flutter's http library for making network requests
+Bottom Navigation bar( with Screen transition animations)
+Listview builders (with an appealing animation)- display data that is in a list format
+Elegant Profile page design using widgets such as slivers to achieve fancy scrolling 
+
+
+##  To run any of the examples
+
+    Clone the repo
+    
+    Navigate to the root folder of the cloned repo
+    
+    Run flutter pub get in the terminal, or click Packages get in IntelliJ or Android Studio.
+
+    Build, run and pray that it works!
+
+
+###Don't know what flutter is?
+
+
+
+    Flutter is Google’s UI toolkit for building beautiful, natively compiled applications for mobile, web, and desktop from a single codebase.
+
+    For more info head on over to  [Flutterdev]('https://flutter.dev')
+    
+    
+###Questions? 
+   
+    Didn't understand something? All the code is mostly self-explanatory but still if you have any questions email me(gichukbx@gmail.com) [email](mailto:gichukxb@gmail.com)
